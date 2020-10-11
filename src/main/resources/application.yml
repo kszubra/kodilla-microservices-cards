@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: cards
+  profiles:
+    active: production
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# ACTUATOR INFO
+info:
+  app:
+    name: "Cards"
+    version: "0.0.1"
+    profile: ${spring.profiles.active}
+  serverInfo:
+    port: ${server.port}
+
+application:
+  datasource:
+    url: ${customers.datasource.url}
+    username: ${customers.datasource.username}
+    password: ${customers.datasource.password}
+    driver-class-name: ${customers.datasource.driver-class-name}
+
+eureka:
+  client: ${eureka-client}
+
+feign:
+  hystrix:
+    enabled: true
